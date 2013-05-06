@@ -247,7 +247,7 @@ JPEGVERSION				= 8b
 JPEGPREFIX				?= $(PREFIX)
 ZLIBVERSION				= zlib-1.2.8
 ZLIBPREFIX				?= $(PREFIX)
-PNGVERSION				= libpng-1.4.5
+PNGVERSION				= libpng-1.4.12
 PNGPREFIX				?= $(PREFIX)
 PNGURL					= http://www.libpng.org/pub/png/libpng.html
 TIFFVERSION				= tiff-3.9.4
@@ -1364,7 +1364,7 @@ $(SRCDIR)/$(ZLIBVERSION).tar.gz:
 
 $(SRCDIR)/$(PNGVERSION).tar.bz2:
 					mkdir -p "$(SRCDIR)" && cd "$(SRCDIR)" && \
-					wget $(WGETFLAGS) "ftp://ftp.simplesystems.org/pub/libpng/png/src/$(PNGVERSION).tar.bz2" && \
+					wget $(WGETFLAGS) "ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng14/$(PNGVERSION).tar.bz2" && \
 					touch "$@"
 
 $(SRCDIR)/$(TIFFVERSION).tar.gz:
