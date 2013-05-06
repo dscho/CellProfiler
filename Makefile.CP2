@@ -774,15 +774,15 @@ $(SITEPKGPREFIX)/sip.so:		$(SRCDIR)/$(SIPVERSION).tar.gz $(PYTHONPREFIX)/bin/pyt
 wxpython:				$(WXPYTHONPREFIX)/bin/pywxrc
 $(WXPYTHONPREFIX)/bin/pywxrc:		$(SRCDIR)/wxPython-src-$(WXPYTHONVERSION).tar.bz2 $(PYTHONPREFIX)/bin/python $(PNGPREFIX)/lib/libpng.la $(JPEGPREFIX)/lib/libjpeg.la $(ZLIBPREFIX)/lib/libz.a $(TIFFPREFIX)/lib/libtiff.la
 					mkdir -p "$(TMPDIR)" && cd "$(TMPDIR)" && \
-					rm -fr "wxPython-src-$(WXPYTHONVERSION)" && \
-					tar -xjf "$(SRCDIR)/wxPython-src-$(WXPYTHONVERSION).tar.bz2" && \
-					rm -fr "wxPython-src-$(WXPYTHONVERSION)-$(HOSTTYPE)" && \
-					mkdir "wxPython-src-$(WXPYTHONVERSION)-$(HOSTTYPE)" && \
+					echo rm -fr "wxPython-src-$(WXPYTHONVERSION)" && \
+					echo tar -xjf "$(SRCDIR)/wxPython-src-$(WXPYTHONVERSION).tar.bz2" && \
+					echo rm -fr "wxPython-src-$(WXPYTHONVERSION)-$(HOSTTYPE)" && \
+					echo mkdir "wxPython-src-$(WXPYTHONVERSION)-$(HOSTTYPE)" && \
 					cd "wxPython-src-$(WXPYTHONVERSION)-$(HOSTTYPE)" && \
 					export PATH="$(PYTHONPREFIX)/bin:$(PATH)" && \
 					export LD_LIBRARY_PATH="$(PYTHONPREFIX)/lib:$${LD_LIBRARY_PATH}" && \
 					export CPPFLAGS="-I$(PNGPREFIX)/include -I$(JPEGPREFIX)/include -I$(TIFFPREFIX)/include -I$(ZLIBPREFIX)/include -I$(SQLITEPREFIX)/include $${CPPFLAGS}" && \
-					export LDFLAGS="-L$(PNGPREFIX)/lib -L$(JPEGPREFIX)/lib -L$(TIFFPREFIX)/lib -L$(ZLIBPREFIX)/lib -L$(SQLITEPREFIX)/lib $${LDFLAGS}" && \
+					export LDFLAGS="-L$(PNGPREFIX)/lib -L$(JPEGPREFIX)/lib -L$(TIFFPREFIX)/lib -L$(ZLIBPREFIX)/lib -L$(SQLITEPREFIX)/lib -L/usr/lib/x86_64-linux-gnu/ $${LDFLAGS}" && \
 					export LD_LIBRARY_PATH="$(PNGPREFIX)/lib:$(JPEGPREFIX)/lib:$(TIFFPREFIX)/lib:$(ZLIBPREFIX)/lib:$(SQLITEPREFIX)/lib:$${LD_LIBRARY_PATH}" && \
 					if test -f "$(GTKPREFIX)/lib/libgtk-x11-2.0.la" ; then \
 						export CPPFLAGS="-I$(GTKPREFIX)/include $${CPPFLAGS}" && \
@@ -792,7 +792,7 @@ $(WXPYTHONPREFIX)/bin/pywxrc:		$(SRCDIR)/wxPython-src-$(WXPYTHONVERSION).tar.bz2
 					if test -d "$(GLIBPREFIX)/lib/pkgconfig" ; then \
 						export PKG_CONFIG_PATH="$(GLIBPREFIX)/lib/pkgconfig:$${PKG_CONFIG_PATH}" ; \
 					fi && \
-					"../wxPython-src-$(WXPYTHONVERSION)/configure" \
+				sh -x 	"../wxPython-src-$(WXPYTHONVERSION)/configure" \
 						--prefix="$(WXPYTHONPREFIX)" \
 						$(WXPYTHONTOOLKIT_$(WXUSEGTK)) \
 						$(WXFLAGS) && \
