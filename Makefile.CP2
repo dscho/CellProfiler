@@ -234,7 +234,7 @@ PYOPENGLURL				= http://pyopengl.sourceforge.net/documentation/installation.html
 PYOPENGLACCELVERSION			= accelerate-3.0.1
 PYOPENGLACCELPREFIX			?= $(PREFIX)
 PYOPENGLACCELURL			= http://pyopengl.sourceforge.net/documentation/installation.html
-QTVERSION				= qt-everywhere-opensource-src-4.7.1
+QTVERSION				= qt-everywhere-opensource-src-4.8.4
 QTPREFIX				?= $(PREFIX)
 QTFLAGS					= -opengl -nomake examples -nomake demos -nomake translations -optimized-qmake -no-nas-sound -no-javascript-jit -opensource -no-qt3support -no-audio-backend -system-zlib -system-libtiff -system-libpng -system-libjpeg
 SIPVERSION				= sip-4.12.1
@@ -1318,7 +1318,9 @@ $(SRCDIR)/$(PYQTVERSION).tar.gz:
 
 $(SRCDIR)/$(QTVERSION).tar.gz:
 					mkdir -p "$(SRCDIR)" && cd "$(SRCDIR)" && \
-					wget $(WGETFLAGS) "http://get.qt.nokia.com/qt/source/$(QTVERSION).tar.gz" && \
+					QTVERSIONNR=$$(echo $(QTVERSION) | cut -d'-' -f5) && \
+					QTVERSIONNR2=$$(echo $${QTVERSIONNR} | cut -d'.' -f1,2) && \
+					wget $(WGETFLAGS) "http://download.qt-project.org/official_releases/qt/$${QTVERSIONNR2}/$${QTVERSIONNR}/$(QTVERSION).tar.gz" && \
 					touch "$@"
 
 $(SRCDIR)/$(FFTWVERSION).tar.gz:
