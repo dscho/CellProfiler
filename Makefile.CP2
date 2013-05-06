@@ -245,7 +245,7 @@ PYQTPREFIX				?= $(PREFIX)
 PYQTURL					= http://www.riverbankcomputing.co.uk/software/pyqt/download
 JPEGVERSION				= 8b
 JPEGPREFIX				?= $(PREFIX)
-ZLIBVERSION				= zlib-1.2.5
+ZLIBVERSION				= zlib-1.2.8
 ZLIBPREFIX				?= $(PREFIX)
 PNGVERSION				= libpng-1.4.5
 PNGPREFIX				?= $(PREFIX)
@@ -844,10 +844,10 @@ $(JPEGPREFIX)/lib/libjpeg.la:		$(SRCDIR)/jpegsrc.v$(JPEGVERSION).tar.gz
 					$(MAKE) -j1 install
 
 zlib:					$(ZLIBPREFIX)/lib/libz.a
-$(ZLIBPREFIX)/lib/libz.a:		$(SRCDIR)/$(ZLIBVERSION).tar.bz2
+$(ZLIBPREFIX)/lib/libz.a:		$(SRCDIR)/$(ZLIBVERSION).tar.gz
 					mkdir -p "$(TMPDIR)" && cd "$(TMPDIR)" && \
 					rm -fr "$(ZLIBVERSION)" && \
-					tar -xjf "$(SRCDIR)/$(ZLIBVERSION).tar.bz2" && \
+					tar -xzf "$(SRCDIR)/$(ZLIBVERSION).tar.gz" && \
 					cd "$(ZLIBVERSION)" && \
 					./configure \
 						--prefix="$(ZLIBPREFIX)" && \
@@ -1357,9 +1357,9 @@ $(SRCDIR)/jpegsrc.v$(JPEGVERSION).tar.gz:
 					wget $(WGETFLAGS) "http://www.ijg.org/files/jpegsrc.v$(JPEGVERSION).tar.gz" && \
 					touch "$@"
 
-$(SRCDIR)/$(ZLIBVERSION).tar.bz2:
+$(SRCDIR)/$(ZLIBVERSION).tar.gz:
 					mkdir -p "$(SRCDIR)" && cd "$(SRCDIR)" && \
-					wget $(WGETFLAGS) "http://zlib.net/$(ZLIBVERSION).tar.bz2" && \
+					wget $(WGETFLAGS) "http://zlib.net/$(ZLIBVERSION).tar.gz" && \
 					touch "$@"
 
 $(SRCDIR)/$(PNGVERSION).tar.bz2:
@@ -1488,5 +1488,5 @@ $(SRCDIR)/$(GETTEXTVERSION).tar.gz:
 					wget $(WGETFLAGS) "http://ftp.gnu.org/pub/gnu/gettext/$(GETTEXTVERSION).tar.gz" && \
 					touch "$@"
 
-download:				$(SRCDIR)/findlibjvm.class $(SRCDIR)/$(LAPACKVERSION).tgz $(SRCDIR)/$(ATLASVERSION).tar.bz2 $(SRCDIR)/$(NUMPYVERSION).tar.gz $(SRCDIR)/$(SCIPYVERSION).tar.gz $(SRCDIR)/$(UMFPACKVERSION).tar.gz $(SRCDIR)/$(CAMDVERSION).tar.gz $(SRCDIR)/$(CCOLAMDVERSION).tar.gz $(SRCDIR)/$(COLAMDVERSION).tar.gz $(SRCDIR)/$(CHOLMODVERSION).tar.gz $(SRCDIR)/$(UFCONFIGVERSION).tar.gz $(SRCDIR)/$(AMDVERSION).tar.gz $(SRCDIR)/$(PYTHONVERSION).tar.bz2 $(SRCDIR)/$(MATPLOTLIBVERSION).tar.gz $(SRCDIR)/wxPython-src-$(WXPYTHONVERSION).tar.bz2 $(SRCDIR)/$(PYOPENGLVERSION).tar.gz $(SRCDIR)/PyOpenGL-$(PYOPENGLACCELVERSION).tar.gz $(SRCDIR)/$(SIPVERSION).tar.gz $(SRCDIR)/$(PYQTVERSION).tar.gz $(SRCDIR)/$(QTVERSION).tar.gz $(SRCDIR)/$(FFTWVERSION).tar.gz $(SRCDIR)/$(PYPIVERSION) $(SRCDIR)/$(DECORATORVERSION).tar.gz $(SRCDIR)/MySQL-python-$(MYSQLPYTHONVERSION).tar.gz $(SRCDIR)/$(PYTHONNOSEVERSION).tar.gz $(SRCDIR)/$(PILVERSION).tar.gz $(SRCDIR)/jpegsrc.v$(JPEGVERSION).tar.gz $(SRCDIR)/$(ZLIBVERSION).tar.bz2 $(SRCDIR)/$(PNGVERSION).tar.bz2 $(SRCDIR)/$(TIFFVERSION).tar.gz $(SRCDIR)/$(CYTHONVERSION).tar.gz $(SRCDIR)/$(VIGRAVERSION)-src.tar.gz $(SRCDIR)/$(QIMGTOARRVERSION).tar.gz $(SRCDIR)/$(HDF5VERSION).tar.bz2 $(SRCDIR)/$(H5PYVERSION).tar.gz $(SRCDIR)/$(PCREVERSION).tar.bz2 $(SRCDIR)/$(SWIGVERSION).tar.gz $(SRCDIR)/$(ILASTIKVERSION).tar.gz $(SRCDIR)/$(GTKVERSION).tar.bz2 $(SRCDIR)/$(GLIBVERSION).tar.bz2 $(SRCDIR)/$(PANGOVERSION).tar.bz2 $(SRCDIR)/$(CAIROVERSION).tar.gz $(SRCDIR)/$(ATKVERSION).tar.bz2 $(SRCDIR)/$(PIXMANVERSION).tar.gz $(SRCDIR)/$(GDKPIXBUFVERSION).tar.bz2 $(SRCDIR)/$(FONTCFGVERSION).tar.gz $(SRCDIR)/$(PYSQLITEVERSION).tar.gz $(SRCDIR)/$(SQLITEVERSION).tar.gz $(SRCDIR)/$(MYSQLVERSION).tar.gz $(SRCDIR)/$(NCURSESVERSION).tar.gz $(SRCDIR)/$(BOOSTVERSION).tar.bz2 $(SRCDIR)/$(GETTEXTVERSION).tar.gz
+download:				$(SRCDIR)/findlibjvm.class $(SRCDIR)/$(LAPACKVERSION).tgz $(SRCDIR)/$(ATLASVERSION).tar.bz2 $(SRCDIR)/$(NUMPYVERSION).tar.gz $(SRCDIR)/$(SCIPYVERSION).tar.gz $(SRCDIR)/$(UMFPACKVERSION).tar.gz $(SRCDIR)/$(CAMDVERSION).tar.gz $(SRCDIR)/$(CCOLAMDVERSION).tar.gz $(SRCDIR)/$(COLAMDVERSION).tar.gz $(SRCDIR)/$(CHOLMODVERSION).tar.gz $(SRCDIR)/$(UFCONFIGVERSION).tar.gz $(SRCDIR)/$(AMDVERSION).tar.gz $(SRCDIR)/$(PYTHONVERSION).tar.bz2 $(SRCDIR)/$(MATPLOTLIBVERSION).tar.gz $(SRCDIR)/wxPython-src-$(WXPYTHONVERSION).tar.bz2 $(SRCDIR)/$(PYOPENGLVERSION).tar.gz $(SRCDIR)/PyOpenGL-$(PYOPENGLACCELVERSION).tar.gz $(SRCDIR)/$(SIPVERSION).tar.gz $(SRCDIR)/$(PYQTVERSION).tar.gz $(SRCDIR)/$(QTVERSION).tar.gz $(SRCDIR)/$(FFTWVERSION).tar.gz $(SRCDIR)/$(PYPIVERSION) $(SRCDIR)/$(DECORATORVERSION).tar.gz $(SRCDIR)/MySQL-python-$(MYSQLPYTHONVERSION).tar.gz $(SRCDIR)/$(PYTHONNOSEVERSION).tar.gz $(SRCDIR)/$(PILVERSION).tar.gz $(SRCDIR)/jpegsrc.v$(JPEGVERSION).tar.gz $(SRCDIR)/$(ZLIBVERSION).tar.gz $(SRCDIR)/$(PNGVERSION).tar.bz2 $(SRCDIR)/$(TIFFVERSION).tar.gz $(SRCDIR)/$(CYTHONVERSION).tar.gz $(SRCDIR)/$(VIGRAVERSION)-src.tar.gz $(SRCDIR)/$(QIMGTOARRVERSION).tar.gz $(SRCDIR)/$(HDF5VERSION).tar.bz2 $(SRCDIR)/$(H5PYVERSION).tar.gz $(SRCDIR)/$(PCREVERSION).tar.bz2 $(SRCDIR)/$(SWIGVERSION).tar.gz $(SRCDIR)/$(ILASTIKVERSION).tar.gz $(SRCDIR)/$(GTKVERSION).tar.bz2 $(SRCDIR)/$(GLIBVERSION).tar.bz2 $(SRCDIR)/$(PANGOVERSION).tar.bz2 $(SRCDIR)/$(CAIROVERSION).tar.gz $(SRCDIR)/$(ATKVERSION).tar.bz2 $(SRCDIR)/$(PIXMANVERSION).tar.gz $(SRCDIR)/$(GDKPIXBUFVERSION).tar.bz2 $(SRCDIR)/$(FONTCFGVERSION).tar.gz $(SRCDIR)/$(PYSQLITEVERSION).tar.gz $(SRCDIR)/$(SQLITEVERSION).tar.gz $(SRCDIR)/$(MYSQLVERSION).tar.gz $(SRCDIR)/$(NCURSESVERSION).tar.gz $(SRCDIR)/$(BOOSTVERSION).tar.bz2 $(SRCDIR)/$(GETTEXTVERSION).tar.gz
 
