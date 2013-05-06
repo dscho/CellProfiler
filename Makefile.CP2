@@ -457,7 +457,7 @@ $(ATLASPREFIX)/lib/libatlas.a:		$(SRCDIR)/$(ATLASVERSION).tar.bz2 $(TMPDIR)/$(LA
 					../configure \
 						-Fa alg -fPIC -b 64 \
 						-Ss flapack "$(TMPDIR)/$(LAPACKVERSION)/lapack_LINUX.a" \
-						-Ss pmake "make -j4" -Si cputhrchk 0 \
+						-Ss pmake "make -j4" \
 						--prefix="$(ATLASPREFIX)" && \
 					$(MAKE) && \
 					mkdir tmp && \
