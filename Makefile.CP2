@@ -157,7 +157,7 @@ SQLITEVERSION				= sqlite-autoconf-3070500
 SQLITEPREFIX				?= $(PREFIX)
 SQLITEURL				= http://www.sqlite.org/download.html
 #MYSQLVERSION				= mysql-5.1.54
-MYSQLVERSION				= mysql-5.1.55
+MYSQLVERSION				= mysql-5.1.69
 MYSQLPREFIX				?= $(PREFIX)
 MYSQLURL				= http://dev.mysql.com/downloads/mysql/5.1.html
 MYSQLPYTHONVERSION			= 1.2.3
@@ -1479,7 +1479,7 @@ $(SRCDIR)/$(SQLITEVERSION).tar.gz:
 
 $(SRCDIR)/$(MYSQLVERSION).tar.gz:
 					mkdir -p "$(SRCDIR)" && cd "$(SRCDIR)" && \
-					wget $(WGETFLAGS) "ftp://mirror.services.wisc.edu/mirrors/mysql/Downloads/MySQL-5.1/$(MYSQLVERSION).tar.gz" && \
+					wget $(WGETFLAGS) "http://cdn.mysql.com/Downloads/MySQL-5.1/$(MYSQLVERSION).tar.gz" && \
 					touch "$@"
 
 $(SRCDIR)/$(NCURSESVERSION).tar.gz:
