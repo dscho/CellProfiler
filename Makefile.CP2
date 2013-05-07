@@ -990,7 +990,7 @@ $(CELLPROFILERPREFIX)/CellProfiler/CellProfiler.py:	$(CYTHONPREFIX)/bin/cython $
 					cd "$(CELLPROFILERPREFIX)" && \
 					if test -d "./CellProfiler" ; then \
 						cd ./CellProfiler && \
-						git clean -x -d . ; \
+						git clean -f -x -d . ; \
 					else \
 						rm -fr "./CellProfiler" && \
                                                 git clone "$(CELLPROFILER_CO_URL)" ./CellProfiler && \
