@@ -1412,6 +1412,14 @@ $(SRCDIR)/$(SWIGVERSION).tar.gz:
 $(SRCDIR)/$(ILASTIKVERSION).tar.gz:
 					mkdir -p "$(SRCDIR)" && cd "$(SRCDIR)" && \
 					wget $(WGETFLAGS) "http://www.ilastik.org/download.php?cat=11_Download&file=$(ILASTIKVERSION).tar.gz" && \
+					case "$(head -c 1024 "$(ILASTIKVERSION).tar.gz")" in \
+					"The archive is currently being generated"*) \
+						cat "$(ILASTIKVERSION).tar.gz" && \
+						rm "$(ILASTIKVERSION).tar.gz" && \
+						sleep 60 && \
+						wget $(WGETFLAGS) "http://www.ilastik.org/download.php?cat=11_Download&file=$(ILASTIKVERSION).tar.gz" \
+						;; \
+					esac && \
 					touch "$@"
 
 $(SRCDIR)/$(GTKVERSION).tar.bz2:
